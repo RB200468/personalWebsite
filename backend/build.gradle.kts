@@ -24,6 +24,8 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-webmvc-test")
     testImplementation("org.springframework.boot:spring-boot-starter-jdbc-test")
+    // Validates real responses against contract/openapi.yaml (see ContractConformanceTest).
+    testImplementation("com.atlassian.oai:openapi-request-validator-mockmvc:3.0.0")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
 }
 
