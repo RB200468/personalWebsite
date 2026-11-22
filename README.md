@@ -15,8 +15,12 @@ A portfolio and blog with an admin page for writing content. See `docs/context.m
 
 | Task | Command |
 | --- | --- |
-| Run the backend (port 8080) | coming in ENG-3 |
+| Run the backend (port 8080) | coming in a later issue |
 | Run the frontend (Vite dev server) | coming in ENG-4 |
-| Run backend tests | coming in ENG-3 |
+| Check the contract generates the health interface | `backend/scripts/check-codegen.sh` |
 | Run frontend tests | coming in ENG-4 |
-| Regenerate API code from the contract | coming in ENG-5 |
+| Regenerate backend API interfaces from the contract | `cd backend && ./gradlew generateApi` |
+
+## Generated code
+
+`contract/openapi.yaml` is hand-written. The backend's Spring interfaces and models are generated from it into `backend/build/generated/openapi/`, which is not committed. Never edit generated code. Change the contract, then run `cd backend && ./gradlew generateApi`. An invalid contract fails the build.
