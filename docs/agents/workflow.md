@@ -24,7 +24,7 @@ Every code change has a Linear issue. If there is none, create one before starti
 | In Human Review | The reviewer passed. Waiting for the user. | Agent |
 | Done | The user merged the PR. | Agent, after the user says so |
 
-The agent never merges a PR and never moves an issue past **In Human Review** on its own.
+The agent never merges a PR. The only move past **In Human Review** is to **Done**, and only after the user says the PR is merged.
 
 ## Commits and PRs
 
