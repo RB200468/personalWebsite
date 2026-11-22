@@ -1,0 +1,29 @@
+openapi: 3.1.0
+info:
+  title: Personal website API
+  version: 1.0.0
+paths:
+  /api/health:
+    get:
+      operationId: getHealth
+      summary: Report whether the API is running
+      tags:
+        - health
+      responses:
+        "200":
+          description: The API is up.
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Health"
+components:
+  schemas:
+    Health:
+      type: object
+      required:
+        - status
+      properties:
+        status:
+          type: string
+          enum:
+            - UP
