@@ -7,7 +7,7 @@ How an issue goes from Todo to Done.
 3. Work test-first (see `testing.md`). Keep the change inside the issue's scope.
 4. Run the full relevant test suite, then commit. Do not open a PR yet. Move the issue to **In Review**.
 5. Start an independent reviewer agent on the branch (see `code-review.md`). Post its result as a comment on the Linear issue.
-   - **FAIL:** move the issue back to **In Progress**, fix the findings, commit, move it to **In Review** and start a new reviewer. After 3 FAILs, stop and ask the user.
+   - **FAIL:** move the issue back to **In Progress**, fix the findings, commit, move it to **In Review** and start a new reviewer. After 3 FAILs in a row, stop and ask the user, and leave the issue in **In Progress**. The count restarts after a user change request.
    - **PASS:** go to step 6.
 6. Push the branch and open a PR with `--base release/v1.0.0`. The body ends with `Closes ENG-N`. Post the reviewer's result as a comment on the PR. Move the issue to **In Human Review** and tell the user it is ready. Stop there.
 7. The user reviews and merges. If the user asks for changes, move the issue back to **In Progress**. Fix them, then repeat steps 4 to 6. Push to the same PR instead of opening a new one.
