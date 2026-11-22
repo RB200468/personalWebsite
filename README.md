@@ -18,7 +18,8 @@ A portfolio and blog with an admin page for writing content. See `docs/context.m
 | Run the backend (port 8080) | coming in a later issue |
 | Run the frontend (Vite dev server, port 5173) | `cd frontend && npm run dev` |
 | Check the contract generates the health interface | `backend/scripts/check-codegen.sh` |
-| Run frontend tests | `cd frontend && npm test` |
+| Run all backend tests (includes the contract check) | `cd backend && ./gradlew test` |
+| Run all frontend tests (includes the axe accessibility check) | `cd frontend && npm test` |
 | Regenerate backend API interfaces from the contract | `cd backend && ./gradlew generateApi` |
 | Regenerate the frontend API client from the contract | `cd frontend && npm run generate` |
 
