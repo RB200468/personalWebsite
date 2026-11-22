@@ -27,7 +27,7 @@ Read it as in **Read an issue** above. Linear identifiers look like `ENG-123`.
 - **Team**: use the `ENG` team for all issues. (A `PRO` team exists but is unused for now.)
 - **Type labels**: `Bug`, `Feature`, `Improvement`.
 - **Workflow labels** (who acts next): `ready-for-agent` (spec is clear enough to implement without asking), `ready-for-human` (needs judgment, design taste, or credentials), `needs-info` (blocked on an answer). Use `addLabels`/`removeLabels` so type labels aren't dropped.
-- **Statuses**: Backlog → Todo → In Progress → In Review → In Human Review → Done. "In Review" means the independent reviewer agent is checking the PR. "In Human Review" means the reviewer passed and the PR is waiting for the user. A FAIL sends the issue back to In Progress. See `workflow.md`.
+- **Statuses**: Backlog → Todo → In Progress → In Review → In Human Review → Done. "In Review" means the independent reviewer agent is checking the branch, before any PR is opened. "In Human Review" means the reviewer passed, the PR is open and it is waiting for the user. A FAIL sends the issue back to In Progress. See `workflow.md`.
 - **Descriptions**: human-readable problem and acceptance criteria first. Put plans, file lists, and repro logs in a collapsible `+++ Agent notes` section at the end.
 - **Branches and PRs**: include the issue ID (e.g. `ENG-12-add-blog-page`) so Linear links them.
 - **Before creating**: search with `list_issues` for duplicates.
