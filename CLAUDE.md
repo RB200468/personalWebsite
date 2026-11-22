@@ -12,11 +12,11 @@ Single-context: one `GLOSSARY.md` and `docs/adr/` at the repo root. See `docs/ag
 
 Read the relevant file before the matching work:
 
-- `docs/agents/workflow.md`: branching, commits, PRs, closing issues. Branch from and PR into `release/v1.0.0`, never `main`.
+- `docs/agents/workflow.md`: branching, commits, PRs, issue states, closing issues. Branch from and PR into `release/v1.0.0`, never `main`.
 - `docs/agents/testing.md`: strict test-first on every issue.
 - `docs/agents/programming.md`: code style, stack rules, accessibility.
 - `docs/agents/debugging.md`: reproduce, find the cause, then fix.
-- `docs/agents/code-review.md`: self-review before opening a PR.
+- `docs/agents/code-review.md`: an independent reviewer agent checks the branch before any PR is opened. FAIL goes back to **In Progress**. PASS opens the PR and moves the issue to **In Human Review**.
 
 ## Project context
 

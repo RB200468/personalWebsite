@@ -5,12 +5,26 @@ How an issue goes from Todo to Done.
 1. Read the issue and the spec it links to. If the spec is unclear, ask. Do not guess.
 2. Update `release/v1.0.0` and branch from it, using the issue's Linear branch name (`<user>/eng-N-slug`). Never branch from or push to `main`. Move the issue to **In Progress**.
 3. Work test-first (see `testing.md`). Keep the change inside the issue's scope.
-4. Self-review (see `code-review.md`), fix the findings, then commit.
-5. Push the branch and open a PR with `--base release/v1.0.0`. The body ends with `Closes ENG-N`. Move the issue to **In Review**.
-6. The user reviews and merges. If changes are requested, move the issue back to **In Progress**, then to **In Review** again when the PR is updated.
-7. Mark the issue **Done** only after the user says the PR is merged.
+4. Run the full relevant test suite, then commit. Do not open a PR yet. Move the issue to **In Review**.
+5. Start an independent reviewer agent on the branch (see `code-review.md`). Post its result as a comment on the Linear issue.
+   - **FAIL:** move the issue back to **In Progress**, fix the findings, commit, move it to **In Review** and start a new reviewer. After 3 FAILs in a row, stop and ask the user, and leave the issue in **In Progress**. The count restarts after a user change request.
+   - **PASS:** go to step 6.
+6. Push the branch and open a PR with `--base release/v1.0.0`. The body ends with `Closes ENG-N`. Post the reviewer's result as a comment on the PR. Move the issue to **In Human Review** and tell the user it is ready. Stop there.
+7. The user reviews and merges. If the user asks for changes, move the issue back to **In Progress**. Fix them, then repeat steps 4 to 6. Push to the same PR instead of opening a new one.
+8. Mark the issue **Done** only after the user says the PR is merged.
 
 Every code change has a Linear issue. If there is none, create one before starting.
+
+## Issue states
+
+| State | Meaning | Moved by |
+| --- | --- | --- |
+| In Progress | Being built or fixed. | Agent |
+| In Review | The independent reviewer agent is checking the branch. No PR yet. | Agent |
+| In Human Review | The reviewer passed and the PR is open. Waiting for the user. | Agent |
+| Done | The user merged the PR. | Agent, after the user says so |
+
+The agent opens a PR only after the reviewer passes. The agent never merges a PR. The only move past **In Human Review** is to **Done**, and only after the user says the PR is merged.
 
 ## Commits and PRs
 
