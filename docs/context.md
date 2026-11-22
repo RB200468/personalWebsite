@@ -92,6 +92,6 @@ These are also recorded in `CLAUDE.md`.
 
 ## Open items
 
-- Confirm the exact Spring Boot 4.1 patch and the Gradle 9 version when the backend is scaffolded (pin them in the Gradle wrapper).
+- ~~Confirm the exact Spring Boot 4.1 patch and the Gradle 9 version.~~ Decided in ENG-4: Spring Boot 4.1.3 (pinned in `backend/build.gradle.kts`) and Gradle 9.0.0 (wrapper). Flyway and the SQLite driver are managed by Spring Boot's dependency versions, except `sqlite-jdbc`, which is pinned to 3.54.1.0.
 - Revisit link previews and SEO after v1.
 - Decide how to back up the SQLite content once real posts exist.
