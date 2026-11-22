@@ -1,0 +1,6 @@
+.page {
+  max-width: 65ch;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  font-family: system-ui, sans-serif;
+}
