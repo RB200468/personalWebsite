@@ -12,13 +12,17 @@ rm -rf build/generated
 ./gradlew --quiet generateApi
 grep -q "interface HealthApi" "$OUT/HealthApi.java"
 grep -q "/api/health" "$OUT/HealthApi.java"
-grep -q "status" "$OUT/model/Health.java"
+grep -q "StatusEnum status" "$OUT/model/Health.java"
 
 # Change the response shape, regenerate, expect the generated model to change.
 cp "$CONTRACT" "$CONTRACT.bak"
 trap 'mv "$CONTRACT.bak" "$CONTRACT"' EXIT
 sed -i.sed 's/status:/state:/; s/- status/- state/' "$CONTRACT" && rm -f "$CONTRACT.sed"
 ./gradlew --quiet generateApi
-grep -q "state" "$OUT/model/Health.java"
-! grep -q "String status" "$OUT/model/Health.java"
+grep -q "StateEnum state" "$OUT/model/Health.java"
+# Not written as `! grep`: bash exempts a negated command from `set -e`, so that form can never fail.
+if grep -q "StatusEnum status" "$OUT/model/Health.java"; then
+  echo "FAIL: old field 'status' is still generated" >&2
+  exit 1
+fi
 echo "codegen check passed"
